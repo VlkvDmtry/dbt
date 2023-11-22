@@ -1,0 +1,105 @@
+
+version: 2
+
+models:
+  - name: flights_stg
+    description: "Инфо о полетах"
+    columns:
+      - name: flight_id
+        description: "ID полета (PK)"
+        tests:
+          - unique
+          - not_null
+      - name: flight_no
+        description: "Номер полета"
+      - name: departure_datetime
+        description: "Дата и время отправления"
+      - name: departure_date
+        description: "Дата отправления"
+      - name: departure_airport
+        description: "Аэропорт отправления"
+      - name: arrival_datetime
+        description: "Дата и время прибытия"
+      - name: arrival_date
+        description: "Дата прибытия"
+      - name: arrival_airport
+        description: "Аэропорт прибытия"
+      - name: status
+        description: "Статус полета"
+
+  - name: tickets_stg
+    description: "Инфо о билетах"
+    columns:
+      - name: ticket_no
+        description: "Номер билета (PK)"
+        tests:
+          - unique
+          - not_null
+      - name: passenger_id
+        description: "ID пассажира"
+      - name: passenger_name
+        description: "Имя пассажира"
+      - name: passenger_phone   
+        description: "Номер телефона пассажира" 
+
+  - name: flights_rep
+    description: '{{ doc("flights_rep_desc") }}'
+    columns:
+      - name: flight_id
+        description: "ID полета"
+        tests:
+          - relationships:
+              to: ref('flights_stg')
+              field: flight_id
+      - name: departure_airport
+        description: "Код аэропорта отправления"
+      - name: departure_airport_name
+        description: "Наименование аэропорта отправления"
+        tests:
+          - string_not_null_or_empty:
+              key_field: departure_airport
+      - name: departure_city
+        description: "Наименование города отправления"
+        tests:
+          - string_not_null_or_empty:
+              key_field: departure_airport
+      - name: arrival_airport
+        description: "Код аэропорта прибытия"
+      - name: arrival_airport_name
+        description: "Наименование аэропорта прибытия"
+        tests:
+          - string_not_null_or_empty:
+              key_field: arrival_airport
+      - name: arrival_city
+        description: "Наименование города прибытия"
+        tests:
+          - string_not_null_or_empty:
+              key_field: arrival_airport
+      - name: flight_duration
+        description: "Длительность полета"      
+      - name: fare_conditions
+        description: "Класс обслуживания"
+        tests:
+          - accepted_values:
+              values: ['Economy','Comfort','Business']
+      - name: ticket_cnt
+        description: "Кол-во билетов"
+      - name: total_profit
+        description: "Сумма проданных билетов"
+
+  - name: aircraft
+    description: "Инфо о самолетах"
+    columns:
+      - name: aircraft_code
+        description: "Код самолета (PK)"
+        tests:
+          - unique
+          - not_null
+      - name: aircraft_name
+        description: "Наименование самолета"
+      - name: range
+        description: "Дистанция полета"
+      - name: source_dml_date   
+        description: "Дата вставки/обновления записи на источнике"
+      - name: dbt_dml_date   
+        description: "Дата вставки/обновления записи DBT"

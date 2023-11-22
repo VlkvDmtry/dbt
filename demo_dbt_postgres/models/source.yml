@@ -1,0 +1,25 @@
+sources:
+  - name: demodb
+    description: Тестовая база с информацией о авиаперевозках
+    database: demo
+    schema: bookings
+    tables:
+      - name: flights
+        identifier: flights
+        description: Инфо о полетах
+      - name: tickets
+        identifier: tickets
+        description: Инфо о билетах
+        freshness: 
+          warn_after: {count: 1, period: day}
+          error_after: {count: 3, period: day}
+        loaded_at_field: dml_date
+      - name: ticket_flights
+        identifier: ticket_flights
+        description: Инфо о связи билетов и полетов
+      - name: seats
+        identifier: seats
+        description: Инфо о местах в самолете
+      - name: aircrafts
+        identifier: aircrafts_data
+        description: Инфо о самолетах

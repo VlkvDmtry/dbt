@@ -1,0 +1,20 @@
+
+version: 2
+
+models:
+  - name: lnk_flights_tickets
+    description: "Таблица flights_tickets - линк"
+    columns:
+      - name: ticket_flight_pk
+        description: "HASH по натуральному ключу (PK)"
+        tests:
+          - unique
+          - not_null
+      - name: ticket_pk
+        description: "HASH по натуральному ключу (FK) hub_tickets"
+      - name: flight_pk
+        description: "HASH по натуральному ключу (FK) hub_flights"
+      - name: LOAD_DATE
+        description: "Дата загрузки"
+      - name: RECORD_SOURCE
+        description: "Источник данных"

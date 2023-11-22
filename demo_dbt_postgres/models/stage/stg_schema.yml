@@ -1,0 +1,94 @@
+
+version: 2
+
+models:
+  - name: stg_flights
+    description: "Вью flights - источник + метаданные"
+    columns:
+      - name: flight_nk
+        description: "ID полета (NK)"
+      - name: flight_num
+        description: "Номер полета"
+      - name: departure_datetime
+        description: "Дата и время отправления"
+      - name: departure_date
+        description: "Дата отправления"
+      - name: departure_airport
+        description: "Аэропорт отправления"
+      - name: arrival_datetime
+        description: "Дата и время прибытия"
+      - name: arrival_date
+        description: "Дата прибытия"
+      - name: arrival_airport
+        description: "Аэропорт прибытия"
+      - name: status
+        description: "Статус полета"
+      - name: dml_date
+        description: "Дата вставки/обновления записи"
+      - name: record_source
+        description: "Источник данных"
+      - name: load_date
+        description: "Дата загрузки"
+      - name: effective_from
+        description: "Дата начала бизнес-версионности"
+      - name: flight_pk
+        description: "HASH по натуральному ключу (PK)"
+        tests:
+          - unique
+          - not_null
+      - name: flight_hashdiff
+        description: "HASH по изменяемым атрибутам сущности"
+
+  - name: stg_tickets
+    description: "Вью tickets - источник + метаданные"
+    columns:
+      - name: ticket_nk
+        description: "ID билета (NK)"
+      - name: passenger_id
+        description: "ID пассажира"
+      - name: passenger_name
+        description: "Имя пассажира"
+      - name: passenger_phone   
+        description: "Номер телефона пассажира"
+      - name: dml_date
+        description: "Дата вставки/обновления записи"
+      - name: record_source
+        description: "Источник данных"
+      - name: load_date
+        description: "Дата загрузки"
+      - name: effective_from
+        description: "Дата начала бизнес-версионности"
+      - name: ticket_pk
+        description: "HASH по натуральному ключу (PK)"
+        tests:
+          - unique
+          - not_null
+      - name: ticket_hashdiff
+        description: "HASH по изменяемым атрибутам сущности"
+
+  - name: stg_flights_tickets
+    description: "Вью flights_tickets - источник + метаданные"
+    columns:
+      - name: ticket_nk
+        description: "ID билета (NK)"
+      - name: flight_nk
+        description: "ID полета (NK)"
+      - name: fare_conditions
+        description: "Класс обслуживания"
+      - name: price   
+        description: "Цена билета"
+      - name: dml_date
+        description: "Дата вставки/обновления записи"
+      - name: record_source
+        description: "Источник данных"
+      - name: load_date
+        description: "Дата загрузки"
+      - name: effective_from
+        description: "Дата начала бизнес-версионности"
+      - name: ticket_flight_pk
+        description: "HASH по натуральному ключу (PK)"
+        tests:
+          - unique
+          - not_null
+      - name: ticket_flight_hashdiff
+        description: "HASH по изменяемым атрибутам сущности"

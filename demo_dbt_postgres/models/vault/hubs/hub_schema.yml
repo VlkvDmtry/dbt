@@ -1,0 +1,39 @@
+
+version: 2
+
+models:
+  - name: hub_flights
+    description: "Таблица flights - хаб"
+    columns:
+      - name: flight_pk
+        description: "HASH по натуральному ключу (PK)"
+        tests:
+          - unique
+          - not_null
+      - name: flight_nk
+        description: "ID полета (NK)"
+        tests:
+          - unique
+          - not_null
+      - name: load_date
+        description: "Дата загрузки"
+      - name: record_source
+        description: "Источник данных"
+
+  - name: hub_tickets
+    description: "Таблица tickets - хаб"
+    columns:
+      - name: ticket_pk
+        description: "HASH по натуральному ключу (PK)"
+        tests:
+          - unique
+          - not_null
+      - name: ticket_nk
+        description: "ID билета (NK)"
+        tests:
+          - unique
+          - not_null
+      - name: load_date
+        description: "Дата загрузки"
+      - name: record_source
+        description: "Источник данных"
