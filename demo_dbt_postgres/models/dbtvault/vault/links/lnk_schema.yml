@@ -14,7 +14,7 @@ models:
         description: "HASH по натуральному ключу (FK) hub_tickets"
       - name: flight_pk
         description: "HASH по натуральному ключу (FK) hub_flights"
-      - name: LOAD_DATE
+      - name: load_date
         description: "Дата загрузки"
-      - name: RECORD_SOURCE
+      - name: record_source
         description: "Источник данных"

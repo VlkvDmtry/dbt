@@ -1,0 +1,33 @@
+
+version: 2
+
+models:
+  - name: sat_flights
+    description: "Таблица flights - сателлит"
+    columns:
+      - name: flight_pk
+        description: "HASH по натуральному ключу"
+      - name: hashdiff
+        description: "HASH по изменяемым атрибутам сущности"
+      - name: flight_num
+        description: "Номер полета"
+      - name: departure_datetime
+        description: "Дата и время отправления"
+      - name: departure_date
+        description: "Дата отправления"
+      - name: departure_airport
+        description: "Аэропорт отправления"
+      - name: arrival_datetime
+        description: "Дата и время прибытия"
+      - name: arrival_date
+        description: "Дата прибытия"
+      - name: arrival_airport
+        description: "Аэропорт прибытия"
+      - name: status
+        description: "Статус полета"
+      - name: effective_from
+        description: "Дата начала техверсионности"
+      - name: load_date
+        description: "Дата загрузки"
+      - name: record_source
+        description: "Источник данных"

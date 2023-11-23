@@ -30,7 +30,7 @@ models:
       - name: load_date
         description: "Дата загрузки"
       - name: effective_from
-        description: "Дата начала бизнес-версионности"
+        description: "Дата начала техверсионности"
       - name: flight_pk
         description: "HASH по натуральному ключу (PK)"
         tests:
@@ -57,7 +57,7 @@ models:
       - name: load_date
         description: "Дата загрузки"
       - name: effective_from
-        description: "Дата начала бизнес-версионности"
+        description: "Дата начала техверсионности"
       - name: ticket_pk
         description: "HASH по натуральному ключу (PK)"
         tests:
@@ -69,9 +69,9 @@ models:
   - name: stg_flights_tickets
     description: "Вью flights_tickets - источник + метаданные"
     columns:
-      - name: ticket_pk
+      - name: ticket_nk
         description: "ID билета (NK)"
-      - name: flight_pk
+      - name: flight_nk
         description: "ID полета (NK)"
       - name: fare_conditions
         description: "Класс обслуживания"
@@ -84,7 +84,11 @@ models:
       - name: load_date
         description: "Дата загрузки"
       - name: effective_from
-        description: "Дата начала бизнес-версионности"
+        description: "Дата начала техверсионности"
+      - name: ticket_pk
+        description: "HASH по натуральному ключу (PK)"
+      - name: flight_pk
+        description: "HASH по натуральному ключу (PK)"  
       - name: ticket_flight_pk
         description: "HASH по натуральному ключу (PK)"
         tests:
